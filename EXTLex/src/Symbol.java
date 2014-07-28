@@ -2,38 +2,27 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package lexicalanalyzer;
+
 
 /**
  *
  * @author GHPaetzold
  */
-public class Token {
-    
-    private String token;
+public class Symbol {
+ 
+    private String id;
+    private String type;
     private String value;
     private int line;
 
-    public Token(String token, String value, int line) {
-        this.token = token;
-        this.value = value;
-        this.line = line;
+    public Symbol() {
+    }
+    
+    public Symbol(String id){
+        this.id = id;
     }
 
-    /**
-     * @return the token
-     */
-    public String getToken() {
-        return token;
-    }
-
-    /**
-     * @param token the token to set
-     */
-    public void setToken(String token) {
-        this.token = token;
-    }
-
+    
     /**
      * @return the value
      */
@@ -61,5 +50,35 @@ public class Token {
     public void setLine(int line) {
         this.line = line;
     }
+
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+    
+    
     
 }

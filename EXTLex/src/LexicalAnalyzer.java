@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package lexicalanalyzer;
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -201,7 +201,7 @@ public class LexicalAnalyzer {
 
                 //If its an error, add it to the error list.
                 if (resultToken.startsWith("ERROR")) {
-                    getErrors().add("Line: " + this.currLine + ". " + prev.getValue());
+                    getErrors().add("Line " + this.currLine + ": " + prev.getValue());
                     n++;
                 } else {
 
