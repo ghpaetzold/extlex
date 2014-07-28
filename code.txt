@@ -1,0 +1,29 @@
+procedure meuprocedimento(int a)
+begin
+	a = a+1-2/3*4;
+end;
+
+#Comentario 1#
+
+begin
+	while(identificador1 > 12.34 and identificador2 == "minha_string")
+	begin
+		int a;
+		string b;
+		char c;
+		float d;
+		
+		for(a=1; a<10; a=b+1)
+		begin
+			#Comentario 2#
+			a = 1234;
+			b = "string";
+			c = 'a';
+			d = 12.34;
+			b = "string com erro;
+			c = 'E;
+			d = 12.;
+			#comentario com erro
+		end;
+	end;
+end;

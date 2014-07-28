@@ -1,0 +1,162 @@
+ID0
+ERROR_INVALID_CHARACTER
+Invalid character.
+48~57 1
+39 4
+34 7
+65~90 9
+97~122 9
+35 10
+62 12
+60 14
+61 17
+59 19
+40 20
+41 21
+42 22
+43 23
+45 24
+47 25
+44 26
+9 SPACE
+32 SPACE
+10 IDNEWLINE
+13 IDRETURN
+
+IDNEWLINE
+NULL
+NEWLINE
+
+IDRETURN
+NULL
+NULL
+
+SPACE
+NULL
+NULL
+
+1
+<integer>
+LEXEME
+48~57 1
+46 2
+
+2
+ERROR_INVALID_NUMERAL
+Invalid numeral.
+48~57 3
+
+3
+<float>
+LEXEME
+48~57 3
+
+4
+ERROR_UNCLOSED_CHAR
+Missing closing quote on char object.
+32~38 5
+40~126 5
+39 6
+
+5
+ERROR_UNCLOSED_CHAR
+Missing closing quote on char object.
+39 6
+
+6
+<char>
+LEXEME
+
+7
+ERROR_UNCLOSED_STRING
+Missing closing quote on string object.
+32~33 7
+34~126 7
+34 8
+
+8
+<string>
+LEXEME
+
+9
+<identifier>
+ENTRY_SYMBOL_TABLE
+65~90 9
+97~122 9
+48~57 9
+
+10
+ERROR_UNCLOSED_COMMENT
+Missing closing sharp character on end of comment block.
+32~34 10
+36~126 10
+35 11
+
+11
+<comment>
+LEXEME
+
+12
+<operator>
+RESERVED CT
+61 13
+
+13
+<operator>
+RESERVED CE
+
+14
+<operator>
+RESERVED LT
+62 15
+61 16
+
+15
+<operator>
+RESERVED NE
+
+16
+<operator>
+RESERVED LE
+
+17
+=
+LEXEME
+61 18
+
+18
+<operator>
+RESERVED EQ
+
+19
+;
+LEXEME
+
+20
+(
+LEXEME
+
+21
+)
+LEXEME
+
+22
+*
+LEXEME
+
+23
++
+LEXEME
+
+24
+-
+LEXEME
+
+25
+/
+LEXEME
+
+26
+,
+LEXEME
+ 

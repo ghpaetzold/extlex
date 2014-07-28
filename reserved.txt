@@ -1,0 +1,16 @@
+procedure
+begin
+end
+int
+float
+char
+string
+if
+or
+and
+not
+while
+for
+write
+read
+else
