@@ -1,6 +1,6 @@
 ID0
-ERROR_INVALID_CHARACTER
 Invalid character.
+ERROR
 48~57 1
 39 4
 34 7
@@ -42,8 +42,8 @@ LEXEME
 46 2
 
 2
-ERROR_INVALID_NUMERAL
 Invalid numeral.
+ERROR
 48~57 3
 
 3
@@ -52,15 +52,15 @@ LEXEME
 48~57 3
 
 4
-ERROR_UNCLOSED_CHAR
 Missing closing quote on char object.
+ERROR
 32~38 5
 40~126 5
 39 6
 
 5
-ERROR_UNCLOSED_CHAR
 Missing closing quote on char object.
+ERROR
 39 6
 
 6
@@ -68,8 +68,8 @@ Missing closing quote on char object.
 LEXEME
 
 7
-ERROR_UNCLOSED_STRING
 Missing closing quote on string object.
+ERROR
 32~33 7
 34~126 7
 34 8
@@ -80,14 +80,14 @@ LEXEME
 
 9
 <identifier>
-ENTRY_SYMBOL_TABLE
+LEXEME
 65~90 9
 97~122 9
 48~57 9
 
 10
-ERROR_UNCLOSED_COMMENT
 Missing closing sharp character on end of comment block.
+ERROR
 32~34 10
 36~126 10
 35 11
@@ -98,26 +98,26 @@ LEXEME
 
 12
 <operator>
-RESERVED CT
+LEXEME
 61 13
 
 13
 <operator>
-RESERVED CE
+LEXEME
 
 14
 <operator>
-RESERVED LT
+LEXEME
 62 15
 61 16
 
 15
 <operator>
-RESERVED NE
+LEXEME
 
 16
 <operator>
-RESERVED LE
+LEXEME
 
 17
 =
@@ -126,7 +126,7 @@ LEXEME
 
 18
 <operator>
-RESERVED EQ
+LEXEME
 
 19
 ;

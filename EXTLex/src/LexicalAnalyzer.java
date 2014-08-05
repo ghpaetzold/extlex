@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,15 +45,10 @@ public class LexicalAnalyzer {
 
         this.functionMap = new HashMap<>();
         try {
-            this.functionMap.put("ENTRY_SYMBOL_TABLE", this.getClass().getMethod("ENTRY_SYMBOL_TABLE", String.class, Automata.class, ArrayList.class, String.class, String.class, Integer.class));
-            this.functionMap.put("LEXEME", this.getClass().getMethod("LEXEME", String.class, Automata.class, ArrayList.class, String.class, String.class, Integer.class));
-            this.functionMap.put("NEWLINE", this.getClass().getMethod("NEWLINE", String.class, Automata.class, ArrayList.class, String.class, String.class, Integer.class));
-            this.functionMap.put("RESERVED", this.getClass().getMethod("RESERVED", String.class, Automata.class, ArrayList.class, String.class, String.class, Integer.class));
-            this.functionMap.put("NULL", this.getClass().getMethod("NULL", String.class, Automata.class, ArrayList.class, String.class, String.class, Integer.class));
-        } catch (NoSuchMethodException ex) {
-            System.out.println("vix");
-        } catch (SecurityException ex) {
-            System.out.println("aff");
+            this.functionMap.put("LEXEME", this.getClass().getMethod("LEXEME", String.class, Automata.class, ArrayList.class, String.class, Integer.class));
+            this.functionMap.put("NEWLINE", this.getClass().getMethod("NEWLINE", String.class, Automata.class, ArrayList.class, String.class, Integer.class));
+            this.functionMap.put("NULL", this.getClass().getMethod("NULL", String.class, Automata.class, ArrayList.class, String.class, Integer.class));
+        } catch (NoSuchMethodException | SecurityException ex) {
         }
     }
 
@@ -67,17 +61,12 @@ public class LexicalAnalyzer {
 
         this.functionMap = new HashMap<>();
         try {
-            this.functionMap.put("ENTRY_SYMBOL_TABLE", this.getClass().getMethod("ENTRY_SYMBOL_TABLE", String.class, Automata.class, ArrayList.class, String.class, String.class, Integer.class));
-            this.functionMap.put("LEXEME", this.getClass().getMethod("LEXEME", String.class, Automata.class, ArrayList.class, String.class, String.class, Integer.class));
-            this.functionMap.put("NEWLINE", this.getClass().getMethod("NEWLINE", String.class, Automata.class, ArrayList.class, String.class, String.class, Integer.class));
-            this.functionMap.put("RESERVED", this.getClass().getMethod("RESERVED", String.class, Automata.class, ArrayList.class, String.class, String.class, Integer.class));
-            this.functionMap.put("NULL", this.getClass().getMethod("NULL", String.class, Automata.class, ArrayList.class, String.class, String.class, Integer.class));
-        } catch (NoSuchMethodException ex) {
-            System.out.println("vix");
-        } catch (SecurityException ex) {
-            System.out.println("aff");
+            this.functionMap.put("LEXEME", this.getClass().getMethod("LEXEME", String.class, Automata.class, ArrayList.class, String.class, Integer.class));
+            this.functionMap.put("NEWLINE", this.getClass().getMethod("NEWLINE", String.class, Automata.class, ArrayList.class, String.class, Integer.class));
+            this.functionMap.put("NULL", this.getClass().getMethod("NULL", String.class, Automata.class, ArrayList.class, String.class, Integer.class));
+        } catch (NoSuchMethodException | SecurityException ex) {
         }
-        
+
         this.initializeAnalyzer();
     }
 
@@ -200,25 +189,14 @@ public class LexicalAnalyzer {
                 String resultValue = prev.getValue();
 
                 //If its an error, add it to the error list.
-                if (resultToken.startsWith("ERROR")) {
-                    getErrors().add("Line " + this.currLine + ": " + prev.getValue());
+                if (resultValue.startsWith("ERROR")) {
+                    getErrors().add("Line " + this.currLine + ": " + prev.getToken());
                     n++;
                 } else {
-
-                    //Parse the value data of the previous state.
-                    String[] resultValues = resultValue.split(" ");
-                    String resultKey = resultValues[0];
-                    String resultPar;
-                    if (resultValues.length > 1) {
-                        resultPar = resultValues[1];
-                    } else {
-                        resultPar = resultValue;
-                    }
-
                     //Get the method with its name corresponding to the value of the previous state.
                     try {
-                        Method m = this.functionMap.get(resultKey);
-                        m.invoke(this, lexema, a, result, resultToken, resultPar, this.currLine);
+                        Method m = this.functionMap.get(resultValue);
+                        m.invoke(this, lexema, a, result, resultToken, this.currLine);
                     } catch (SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
                     }
                 }
@@ -308,28 +286,19 @@ public class LexicalAnalyzer {
         return value;
     }
 
-    public void ENTRY_SYMBOL_TABLE(String lexema, Automata a, ArrayList<Token> result, String resultToken, String resultValue, Integer line) {
-        if (isReserved(lexema, a)) {
+    public void LEXEME(String lexema, Automata a, ArrayList<Token> result, String resultToken, Integer line) {
+        if (this.isReserved(lexema, a)) {
             result.add(new Token(lexema, lexema, line));
         } else {
-            String key = this.addSymbolTableEntry(lexema);
-            result.add(new Token(resultToken, key, line));
+            result.add(new Token(resultToken, lexema, line));
         }
     }
 
-    public void LEXEME(String lexema, Automata a, ArrayList<Token> result, String resultToken, String resultValue, Integer line) {
-        result.add(new Token(resultToken, lexema, line));
-    }
-
-    public void NEWLINE(String lexema, Automata a, ArrayList<Token> result, String resultToken, String resultValue, Integer line) {
+    public void NEWLINE(String lexema, Automata a, ArrayList<Token> result, String resultToken, Integer line) {
         this.currLine++;
     }
 
-    public void RESERVED(String lexema, Automata a, ArrayList<Token> result, String resultToken, String resultValue, Integer line) {
-        result.add(new Token(resultToken, resultValue, line));
-    }
-
-    public void NULL(String lexema, Automata a, ArrayList<Token> result, String resultToken, String resultValue, Integer line) {
+    public void NULL(String lexema, Automata a, ArrayList<Token> result, String resultToken, Integer line) {
     }
 
     /**
