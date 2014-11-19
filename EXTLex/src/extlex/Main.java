@@ -1,20 +1,13 @@
+package extlex;
 
 import java.util.*;
 
 /**
- * @author GHPaetzold
+ * @author Gustavo Henrique Paetzold
  */
 public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-
-        args = new String[3];
-        args[0] = "automata.txt";
-        args[1] = "reserved.txt";
-        args[2] = "code.txt";
 
         //Check to see if the parameters are all present:
         if (args.length < 3) {
@@ -31,9 +24,7 @@ public class Main {
 
             //Print the results:
             printOutput(al);
-
         }
-
     }
 
     private static void printHelpMessage() {
@@ -54,7 +45,7 @@ public class Main {
         //Print all errors found.
         System.out.println("Errors:");
         ArrayList<String> errors = al.getErrors();
-        if (errors.size() == 0) {
+        if (errors.isEmpty()) {
             System.out.println("No lexical errors identified!");
         } else {
             for (String error : errors) {

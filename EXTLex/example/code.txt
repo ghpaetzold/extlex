@@ -2,7 +2,7 @@ procedure meuprocedimento ( int a )
 
 a = a+1-2/3*4;
 
-#Comentario 1#
+#Comentario 1
 
 begin
 	while(identificador1 > 12.34 and identificador2 == "minha_string")
@@ -18,8 +18,8 @@ begin
 			a = 1234;
 			b = "string";
 			c = 'a';
-			d = 12.34;
-			b = "string com erro";
+			d = 12.;
+			b = "string com erro;
 			c = 'E';
 			d = 12.12;
 			#comentario com erro#

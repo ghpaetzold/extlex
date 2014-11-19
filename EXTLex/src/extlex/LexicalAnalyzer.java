@@ -1,3 +1,5 @@
+package extlex;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -33,8 +35,9 @@ public class LexicalAnalyzer {
     private HashMap<String, Symbol> symbolTable;
     //Token list.
     private ArrayList<Token> tokenList;
-    //Line controller.
+    //Line and character controllers.
     private Integer currLine;
+    private Integer currChar;
     //Function map.
     private HashMap<String, Method> functionMap;
 
@@ -173,6 +176,7 @@ public class LexicalAnalyzer {
 
         int n = 0;
         this.currLine = 1;
+        this.currChar = 1;
         String lexema = "";
 
         while (n < code.length) {
@@ -190,8 +194,9 @@ public class LexicalAnalyzer {
 
                 //If its an error, add it to the error list.
                 if (resultValue.startsWith("ERROR")) {
-                    getErrors().add("Line " + this.currLine + ": " + prev.getToken());
+                    getErrors().add("Line " + this.currLine + ", Character " + this.currChar + ":\t" + prev.getToken());
                     n++;
+                    this.currChar += 1;
                 } else {
                     //Get the method with its name corresponding to the value of the previous state.
                     try {
@@ -206,6 +211,7 @@ public class LexicalAnalyzer {
             } else {
                 lexema += code[n];
                 n++;
+                this.currChar += 1;
             }
         }
 
@@ -296,6 +302,7 @@ public class LexicalAnalyzer {
 
     public void NEWLINE(String lexema, Automata a, ArrayList<Token> result, String resultToken, Integer line) {
         this.currLine++;
+        this.currChar = 1;
     }
 
     public void NULL(String lexema, Automata a, ArrayList<Token> result, String resultToken, Integer line) {
