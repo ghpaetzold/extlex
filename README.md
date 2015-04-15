@@ -14,21 +14,21 @@ Please use the "Creating a Language for EXTLex" PDF manual to produce the automa
 
 There are two ways of using EXTLex:
 
-	- By running the compiled EXTLex.jar application in order to get a code's token and detected errors.
-	- By adding it as a library in your Java project and using its functionalities as part of your compiler.
+- By running the compiled EXTLex.jar application in order to get a code's token and detected errors.
+- By adding it as a library in your Java project and using its functionalities as part of your compiler.
 		
 To run the compiled EXTLex.jar, do:
 	
-1) Use the "Creating a Language for EXTLex" PDF manual to produce the automata and reserved words files necessary for EXTLex to run.
-2) Open a terminal/cmd instance.
-3) Navigate to the EXTLex folder inside this package (where the EXTLex.jar file is placed).
-4) Run the following command:
+	1) Use the "Creating a Language for EXTLex" PDF manual to produce the automata and reserved words files necessary for EXTLex to run.
+	2) Open a terminal/cmd instance.
+	3) Navigate to the EXTLex folder inside this package (where the EXTLex.jar file is placed).
+	4) Run the following command:
 	
-	java -jar EXTLex.jar <automata_file> <reserved_words_file> <code_file>
+		java -jar EXTLex.jar <automata_file> <reserved_words_file> <code_file>
 			
-5) For help on using EXTLex, try running EXTLex without any parameters:
+	5) For help on using EXTLex, try running EXTLex without any parameters:
 				
-	java -jar EXTLex.jar
+		java -jar EXTLex.jar
 				
 # Output
 If ran correctly, EXTLex will print a message in the following format:
