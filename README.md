@@ -58,7 +58,7 @@ Each error message <error_message_i> represents the message assigned for a given
 	Line 5, Character 14:	Missing closing sharp character on end of comment block.
 	Line 21, Character 11:	Invalid numeral.
 	Line 22, Character 25:	Missing closing quote on string object.
-		
+
 # Citing
 
 Please cite the following paper when using EXTLex in any academic contribution:
